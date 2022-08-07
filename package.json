@@ -1,0 +1,16 @@
+{
+  "name": "dev-notezipper",
+  "version": "1.0.0",
+  "description": "Inital project on mern",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon backend/server.js"
+  },
+  "author": "Kuldeep Singh",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19"
+  }
+}
