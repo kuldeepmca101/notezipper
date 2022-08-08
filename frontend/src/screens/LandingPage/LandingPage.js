@@ -10,7 +10,7 @@ export default function LandingPage() {
                     <Col>
                         <div className="intro-text">
                             <div>
-                                <h1 className="title">Welocome to Note Zipper</h1>
+                                <h1 className="title">Welcome to Note Zipper</h1>
                                 <p className="subtitle">One Safe Place for all your noted</p>
                             </div>
                         </div>
