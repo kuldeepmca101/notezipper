@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import ErrorMessage from '../../components/ErrorMessage';
 import Loading from '../../components/Loading';
 import MainScreen from '../../components/MainScreen';
+import { useDispatch, useSelector } from 'react-redux';
+import { register } from '../../actions/userActions';
 
 const RegisterScreen = () => {
     const [name, setName] = useState("");
@@ -14,38 +16,14 @@ const RegisterScreen = () => {
     const [message, setMessage] = useState(null);
     const [pic, setPic] = useState(null);
     const [picMessage, setPicMessage] = useState(null);
-    const [error, setError] = useState(false);
-    const [loading, setLoading] = useState(false);
+
+    const dispatch = useDispatch();
+    const userRegister = useSelector((state) => state.userRegister);
+    const { loading, error, userInfo } = userRegister;
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        setError(null);
-
-        if (password !== confirmPassword) {
-            setMessage("Password Do not Match");
-        } else {
-            setMessage(null);
-        }
-
-        const config = {
-            headers: {
-                "Content-type": "application/json"
-            }
-        }
-
-        try {
-            setLoading(true);
-
-            const { data } = await axios.post('api/users', {
-                name, email, password
-            }, config);
-
-            setLoading(false);
-            localStorage.setItem("userInfo", JSON.stringify(data));
-        } catch (error) {
-            setError(error.response.data.message);
-            setLoading(false);
-        }
+        dispatch(register({ name, email, password, pic }));
     }
 
     const postDetails = (pics) => {

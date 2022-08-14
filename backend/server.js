@@ -5,6 +5,7 @@ const connectDB = require("./config/db");
 // const bodyParser = require('body-parser')
 
 const userRoutes = require('./routes/userRoutes');
+const noteRoutes = require('./routes/noteRoutes');
 const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
 
 dotenv.config();
@@ -30,11 +31,8 @@ app.get('/', (req, res) => {
     res.send('Api is running');
 });
 
-app.get('/api/notes', (req, res) => {
-    res.json(notes);
-});
-
 app.use("/api/users", userRoutes);
+app.use("/api/notes", noteRoutes);
 
 app.use(notFound);
 

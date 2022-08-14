@@ -18,15 +18,7 @@ const LoginScreen = (props) => {
     const navigate = useNavigate();
 
     const userLogin = useSelector((state) => state.userLogin);
-    const { loading, error, userInfo } = userLogin;
-    console.log(userLogin, userInfo);
-
-    useEffect(() => {
-        if (userInfo) {
-            navigate('/mynotes');
-        }
-
-    }, [navigate, userInfo]);
+    const { loading, error } = userLogin;
 
     const submitHandler = async (e) => {
         e.preventDefault();
