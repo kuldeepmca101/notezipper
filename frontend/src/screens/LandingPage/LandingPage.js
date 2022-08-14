@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import './LandingPage.css';
 
 export default function LandingPage() {
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const userInfo = localStorage.getItem("userInfo");
+        if (!userInfo) {
+            navigate("/login");
+        }
+
+    }, [navigate]);
     return (
         <div className="main">
             <Container>
